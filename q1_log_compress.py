@@ -13,7 +13,7 @@ def list_file_properties(directory_path):
 
         if os.path.isfile(file_path):
             file_size = os.path.getsize(file_path)
-            if file_size / (1024 * 1024 ) >=10 and os.path.splitext(file_path)[1] != ".zip":
+            if file_size / (1024 * 1024 ) >=100 and os.path.splitext(file_path)[1] != ".zip":
                 output_zip_name = os.path.basename(file_path) + '.zip'
                 with zipfile.ZipFile(output_zip_name, 'w', zipfile.ZIP_DEFLATED) as zipf:
                     zipf.write(file_path, os.path.basename(file_path + '/archive'))

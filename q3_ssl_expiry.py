@@ -9,13 +9,11 @@ def read_dns_file():
             get_ssl_expiry(line.strip())
 def get_ssl_expiry(domain, port=443):
     try:
-        # Establish an SSL connection
         context = ssl.create_default_context()
         with socket.create_connection((domain, port), timeout=5) as sock:
             with context.wrap_socket(sock, server_hostname=domain) as ssock:
                 cert = ssock.getpeercert()
 
-        # Extract expiry date
         expiry_date = datetime.strptime(cert['notAfter'], "%b %d %H:%M:%S %Y %Z")
         days_left = (expiry_date - datetime.now()).days
         print(f"SSL certificate for {domain} expires on: {expiry_date}")
