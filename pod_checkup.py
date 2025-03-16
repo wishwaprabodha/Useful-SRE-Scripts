@@ -1,7 +1,7 @@
 import requests
 
-KUBE_API_URL = "http://127.0.0.1:8001/apis/metrics.k8s.io/v1beta1/pods"
-TOKEN_PATH = "/Users/wishwa.wijeratne/SRE/assignment/token"
+KUBE_API_URL = "http://<KUBE_IP>:<PORT>/apis/metrics.k8s.io/v1beta1/pods"
+TOKEN_PATH = "<path_to_token_file>"
 
 with open(TOKEN_PATH, "r") as file:
     token = file.read().strip()
